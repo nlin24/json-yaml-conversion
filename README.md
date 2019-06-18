@@ -1,9 +1,9 @@
 ## Summary
-This solution draws inspirations from the [Red Hat OpenShift on HPE Synergy Playbooks](https://github.com/RHsyseng/ocp-on-synergy). This is aimed to automate the OpenShift platform provisioning process on Synergy, similiarly using Ansible and OneView, but with a decoupled apporoach. The goal is to create key building blocks that are re-useable and maintainable.  
+This is to do a JSON-Yaml conversion for system data downloaded from OneView. Converting to an usable playbook.
 
 ## Requirements:
 - Python2
-- Python3-pip package manager
+- Python-pip package manager
 - virtualenv
 > **_NOTE:_** Both Python3 and Python3-pip can be installed from the Linux OS pakcage manager, such as apt-get and yum. Virtualenv can be installed from Pip. 
 
