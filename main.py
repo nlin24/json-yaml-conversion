@@ -76,8 +76,7 @@ def readFile(fileName):
     print(x)
 
 def removeUri(myDict):
-    newDict = myDict.copy()
-    for key, value in newDict.items():
+    for key, value in myDict.copy().items(): # shallow copy for iterations/tracking. Modify the original dictionary.
         if isinstance(value, dict):
             removeUri(myDict[key])
         elif isinstance(value, list):
