@@ -4,7 +4,9 @@ import os
 import sys
 import json
 import yaml
+import copy
 
+'''
 config = "config.json" # config.json is at the same directory
 oneview_client = ov_create_client.createClient(config)
 
@@ -13,7 +15,7 @@ basic_profile_options = dict(
     serverHardwareUri = "/rest/server-hardware/39313738-3034-584D-5139-313030333147",
     enclosureGroupUri = oneview_client.enclosure_groups.get_all()[0]['uri']
 )
-
+'''
 def getServerProfileByName(name):
     profile = oneview_client.server_profiles.get_by_name(name)
     if profile is None:
@@ -66,6 +68,32 @@ def convertDictionaryToYaml(inputFile="SPT.json"):
             return SPT_yml
     return None
 
+def readFile(fileName):
+    text = None
+    with open(fileName) as file:
+        text = json.loads(file.read())
+    x = removeUri(text)
+    print(x)
+
+def removeUri(myDict):
+    newDict = myDict.copy()
+    for key, value in newDict.items():
+        if isinstance(value, dict):
+            removeUri(myDict[key])
+        elif isinstance(value, list):
+            for i in myDict[key]:
+                if isinstance(i, dict):
+                    removeUri(i)
+                else:
+                    pass
+        else:
+            if "uri" in key or "Uri" in key:
+                #print(key)
+                del myDict[key]
+    return myDict
+
+
+
 
 if __name__ == "__main__":
     
@@ -82,11 +110,12 @@ if __name__ == "__main__":
     
     #ans = ReturnAllServerProfileTemplatesNamesOnly()
     #print(ans)
-    nathan = getSingleServerProfileTemplateByName("compare_profile")
+    #nathan = getSingleServerProfileTemplateByName("compare_profile")
     #print(nathan)
-    writeToFile(nathan, "nathan-profile.txt")
-    nathan_SPT_yaml = convertDictionaryToYaml("nathan-profile.txt")
-    writeToFile(nathan_SPT_yaml, "nathan-profile_SPT.yml")
+    #writeToFile(nathan, "nathan-profile.txt")
+    #nathan_SPT_yaml = convertDictionaryToYaml("nathan-profile.txt")
+    #writeToFile(nathan_SPT_yaml, "nathan-profile_SPT.yml")
+    d = readFile("compare_profile.json")
     print("success")
     #print(nathan_SPT_yaml)
     '''
