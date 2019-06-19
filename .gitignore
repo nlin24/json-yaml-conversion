@@ -2,3 +2,5 @@
 __pycache__
 project-env/
 test-files/
+project-env-python2/
+*.pyc
