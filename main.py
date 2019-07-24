@@ -11,8 +11,8 @@ config = "config.json" # config.json is at the same directory
 oneview_client = ov_create_client.createClient(config)
 
 basic_profile_options = dict(
-    name = "Test-Profile-101-nathan",
-    serverHardwareUri = "/rest/server-hardware/39313738-3034-584D-5139-313030333147",
+    name = "",
+    serverHardwareUri = "",
     enclosureGroupUri = oneview_client.enclosure_groups.get_all()[0]['uri']
 )
 '''
@@ -96,27 +96,13 @@ def removeUri(myDict):
 
 if __name__ == "__main__":
     
-    #testProfile = getServerProfileByName("Test-Profile-101-nathan")
-    #print(testProfile)
-    #createServerProfile(basic_profile_options)
-    #SPs = getAllServerProfile()
-
-    #cSPTs = getAllServerProfileTemplate()
-    #writeToFile(SPTs)
-    #SPT_yaml = convertDictionaryToYaml("SPT.json")
-    #print(SPT_yaml)
-    #writeToFile(SPT_yaml, "SPT.yaml")
-    
     #ans = ReturnAllServerProfileTemplatesNamesOnly()
     #print(ans)
     #nathan = getSingleServerProfileTemplateByName("compare_profile")
-    #print(nathan)
     #writeToFile(nathan, "nathan-profile.txt")
     #nathan_SPT_yaml = convertDictionaryToYaml("nathan-profile.txt")
     #writeToFile(nathan_SPT_yaml, "nathan-profile_SPT.yml")
-    d = readFile("compare_profile.json")
-    print("success")
-    #print(nathan_SPT_yaml)
+    
     '''
     o = convertDictionaryToYaml("test.json")
     print(o)
@@ -134,5 +120,5 @@ if __name__ == "__main__":
     print(o4)
     writeToFile(o4, "o4.yml")
     '''
-    #tempTest = convertDictionaryToYaml("SPT_json_temp.json")
-    #print(tempTest)
+    tempTest = convertDictionaryToYaml("SPT_json_temp.json")
+    print(tempTest)
